@@ -98,6 +98,22 @@ class theme_elegance_core_renderer extends theme_bootstrap_core_renderer {
         }
         return $content;
     }
+    
+    // Imported from theme_bootstrap
+    // removed class nav-justified as it breaks format_tabtopics
+    protected function render_tabtree(tabtree $tabtree) {
+        if (empty($tabtree->subtree)) {
+            return '';
+        }
+        $firstrow = $secondrow = '';
+        foreach ($tabtree->subtree as $tab) {
+            $firstrow .= $this->render($tab);
+            if (($tab->selected || $tab->activated) && !empty($tab->subtree) && $tab->subtree !== array()) {
+                $secondrow = $this->tabtree($tab->subtree);
+            }
+        }
+        return html_writer::tag('ul', $firstrow, array('class' => 'nav nav-tabs')) . $secondrow;
+    }
 
     public function user_menu() {
         global $CFG;
