@@ -399,7 +399,8 @@ class theme_elegance_widgets_renderer extends plugin_renderer_base {
 
         global $OUTPUT, $CFG, $SITE;
         $template = new stdClass();
-        
+
+        $theme = $this->theme;
         $settings = $this->settings;
 
         $template->homeurl = $CFG->wwwroot;
@@ -411,7 +412,8 @@ class theme_elegance_widgets_renderer extends plugin_renderer_base {
         }
 
         if ($settings->logo) {
-            $template->logo = '<div id="logo"></div>';
+            $logoimage = $theme->setting_file_url('logo', 'logo');
+            $template->logo = '<img src="' . $logoimage . '" class="img-responsive">';
         } else {
             $template->logo = $SITE->shortname;
         }
