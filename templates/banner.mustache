@@ -7,17 +7,22 @@
         </ol>
         <div class="carousel-inner" role="listbox">
             {{#banners}}
-                
-                <div class="item {{active}}" role="listbox" style="background-image: url({{{bannerimage}}}); background-size: 100%; background-color: {{bannercolor}};">
-                {{#bannertitle}}
-                <h1>{{bannertitle}}</h1>
-                {{/bannertitle}}
-                {{#bannertext}}
-                <p>{{bannertext}}</p>
-                {{/bannertext}}
-                {{#bannerlinktext}}
-                    <a class="btn" href="{{bannerlinkurl}}">{{bannerlinktext}}</a>
-                {{/bannerlinktext}}
+
+                <div class="item {{active}}" role="listbox">
+                  <img src={{{bannerimage}}}>
+
+                  <div class="carousel-caption">
+                    {{#bannertitle}}
+                    <h1>{{bannertitle}}</h1>
+                    {{/bannertitle}}
+                    {{#bannertext}}
+                    <p>{{bannertext}}</p>
+                    {{/bannertext}}
+                    {{#bannerlinktext}}
+                        <a class="btn" href="{{bannerlinkurl}}">{{bannerlinktext}}</a>
+                    {{/bannerlinktext}}
+                  </div>
+
                 </div>
         
             {{/banners}}
